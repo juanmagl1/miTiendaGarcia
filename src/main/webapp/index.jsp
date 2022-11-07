@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="http://localhost:8080/tiendaMedicamentos/login" method="get">
+<form action="/tiendaMedicamentos/login" method="post">
 	<label>Usuario</label>
 	<input type="text" name="nom"><br>
 	<label>Contraseña</label>

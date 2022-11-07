@@ -34,7 +34,12 @@ public class login extends HttpServlet {
 		String pass=request.getParameter("pass");
 		UserDAO u=new UserDAO();
 		boolean us=u.validateUser(user, pass);
-		response.getWriter().append("Served at: "+ us).append(request.getContextPath());
+		if (!us) {
+			response.sendRedirect("error.jsp");
+		}else {
+			response.sendRedirect("../tiendaMedicamentos/main");
+		}
+		
 	}
 
 	/**

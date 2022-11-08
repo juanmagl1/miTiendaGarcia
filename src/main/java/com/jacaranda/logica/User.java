@@ -12,15 +12,17 @@ public class User {
 private String users;
 private String pass;
 private String name;
+private String email;
 private LocalDate dateBirthday;
 private char gender;
 private boolean admin;
 
-public User(String users, String pass, String name, LocalDate dateBirthday, char gender, boolean admin) {
+public User(String users, String pass, String name,String email, LocalDate dateBirthday, char gender, boolean admin) {
 	super();
 	this.users = users;
 	this.pass = pass;
 	this.name = name;
+	this.email=email;
 	this.dateBirthday = dateBirthday;
 	this.gender = gender;
 	this.admin = admin;
@@ -57,6 +59,14 @@ public void setUsers(String users) {
 
 public String getPass() {
 	return pass;
+}
+
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
 }
 
 public void setPass(String pass) {

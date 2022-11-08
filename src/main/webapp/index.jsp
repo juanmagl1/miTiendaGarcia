@@ -9,10 +9,11 @@
 <body>
 <form action="/tiendaMedicamentos/login" method="post">
 	<label>Usuario</label>
-	<input type="text" name="nom"><br>
+	<input type="text" name="nom" required><br>
 	<label>Contraseña</label>
-	<input type="text" name="pass"><br>
-	<input type="submit" name="butt">
+	<input type="password" name="pass" required><br>
+	<input type="submit" name="butt"><br>
+	<a href="registro.jsp">Si no tiene contraseña, registrese aquí</a>
 </form>
 </body>
 </html>

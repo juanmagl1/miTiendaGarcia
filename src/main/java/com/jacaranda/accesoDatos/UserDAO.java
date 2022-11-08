@@ -33,4 +33,19 @@ public class UserDAO {
 		}
 		return valid;
 	}
+	public boolean addUser(User u) {
+		boolean valid=false;
+		try {
+			session.getTransaction().begin();
+			session.saveOrUpdate(u);
+			session.getTransaction().commit();
+			valid=true;
+		}catch (Exception e) {
+			e.getMessage();
+		}
+		return valid;
+
+		
+		
+	}
 }

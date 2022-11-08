@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/tiendaMedicamentos/login" method="post">
+<form action="login" method="post">
 	<label>Usuario</label>
 	<input type="text" name="nom" required><br>
 	<label>Contraseña</label>

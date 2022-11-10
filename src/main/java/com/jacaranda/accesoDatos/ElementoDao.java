@@ -28,5 +28,18 @@ public class ElementoDao {
 		List<Elementos> conjuntos = (List<Elementos>) query.getResultList();
 		return conjuntos;
 	}
+	public boolean addElemento(Elementos e) {
+		boolean valid=false;
+		
+		try {
+			sesion.getTransaction().begin();
+			sesion.saveOrUpdate(e);
+			sesion.getTransaction().commit();
+			valid=true;
+		}catch (Exception i) {
+			i.getMessage();
+		}
+		return valid;
+	}
 
 }

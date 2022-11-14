@@ -7,6 +7,9 @@
 <title>Iniciar Sesion</title>
 </head>
 <body>
+<%HttpSession sesion=request.getSession();
+sesion.invalidate();
+%>
 <form action="login" method="post">
 	<label>Usuario</label>
 	<input type="text" name="nom" required><br>

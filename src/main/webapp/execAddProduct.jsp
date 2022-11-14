@@ -21,7 +21,10 @@
 	boolean add=d.addElemento(n);
 	if (add){
 		out.print("Elemento añadido con éxito");
+	}else {
+		out.print("No se pudo añadir el producto");
 	}
 	%>
+	<button><a href="login" method="POST">Volver</a></button>
 </body>
 </html>

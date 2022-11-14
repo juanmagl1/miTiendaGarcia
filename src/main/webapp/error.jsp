@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>No estás registrado</title>
 </head>
 <body>
 	<h1>No estás registrado en el sistema correctamente</h1>

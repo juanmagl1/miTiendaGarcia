@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/tiendaMedicamentos/register" method="get">
+	<form action="register" method="POST">
 		<label>Usuario</label><br>
 		<input type="text" name="user" required><br>
 		<label>Contraseña</label><br>

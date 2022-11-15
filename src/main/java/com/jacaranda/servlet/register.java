@@ -42,11 +42,9 @@ public class register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String pass=DigestUtils.md5Hex(request.getParameter("pass"));
-		UserDAO u = new UserDAO();
-		boolean b=u.addUser(new User(request.getParameter("user"),pass,request.getParameter("nom"),request.getParameter("corr"),LocalDate.parse(request.getParameter("date")),request.getParameter("sex").charAt(0),false));
+		boolean b=UserDAO.addUser(new User(request.getParameter("user"),pass,request.getParameter("nom"),request.getParameter("corr"),LocalDate.parse(request.getParameter("date")),request.getParameter("sex").charAt(0),false));
 		if (b) {
-			ElementoDao d=new ElementoDao();
-			List<Elementos>l=d.devuelveConjunto();
+			List<Elementos>l=ElementoDao.devuelveConjunto();
 			StringBuilder s=new StringBuilder();
 					for (Elementos i:l) {
 						s.append("<tr>"

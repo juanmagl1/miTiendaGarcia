@@ -11,26 +11,24 @@ import org.hibernate.query.Query;
 
 import com.jacaranda.logica.Categoria;
 import com.jacaranda.logica.Elementos;
+import com.jacaranda.logica.User;
 
 public class ElementoDao {
-	private StandardServiceRegistry sr;
-	private SessionFactory sf;
-	private Session sesion;
+
 	public ElementoDao() {
 		super();
-		sr = new StandardServiceRegistryBuilder().configure().build();
-		sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
-		sesion = sf.openSession();
+
 	}
 	
-	public List<Elementos> devuelveConjunto() {
+	public static List<Elementos> devuelveConjunto() {
+		Session sesion=ConnectionBD.getSession();
 		Query query = sesion.createQuery("SELECT e FROM com.jacaranda.logica.Elementos e");
 		List<Elementos> conjuntos = (List<Elementos>) query.getResultList();
 		return conjuntos;
 	}
-	public boolean addElemento(Elementos e) {
+	public static boolean addElemento(Elementos e) {
 		boolean valid=false;
-		
+		Session sesion=ConnectionBD.getSession();
 		try {
 			sesion.getTransaction().begin();
 			sesion.saveOrUpdate(e);
@@ -40,6 +38,12 @@ public class ElementoDao {
 			i.getMessage();
 		}
 		return valid;
+	}
+	public static User findElement(int id) {
+		User aux=null;
+		Session sesion=ConnectionBD.getSession();
+		aux=sesion.get(User.class, id);
+		return aux;
 	}
 
 }

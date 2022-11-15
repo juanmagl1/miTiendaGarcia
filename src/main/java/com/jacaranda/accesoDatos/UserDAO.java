@@ -9,18 +9,15 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import com.jacaranda.logica.User;
 
 public class UserDAO {
-	StandardServiceRegistry sr;
-	SessionFactory sf;
-	Session session;
+	
 	
 	public UserDAO() {
 		super();
-		this.sr = new StandardServiceRegistryBuilder().configure().build();;
-		this.sf = new MetadataSources(sr).buildMetadata().buildSessionFactory();
-		this.session = sf .openSession();
+	
 	}
 	
-	public boolean validateUser(String login, String password) {
+	public static boolean validateUser(String login, String password) {
+		Session session=ConnectionBD.getSession();
 		boolean valid = false;
 		User u = (User) session.get(User.class,login);
 		if (u==null) {
@@ -33,7 +30,8 @@ public class UserDAO {
 		}
 		return valid;
 	}
-	public boolean addUser(User u) {
+	public static boolean addUser(User u) {
+		Session session=ConnectionBD.getSession();
 		boolean valid=false;
 		try {
 			session.getTransaction().begin();
@@ -46,7 +44,8 @@ public class UserDAO {
 		return valid;
 
 	}
-	public User findUser(String user) {
+	public static User findUser(String user) {
+		Session session=ConnectionBD.getSession();
 		User aux=session.get(User.class, user);
 		return aux;
 	}

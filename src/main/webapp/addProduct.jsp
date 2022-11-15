@@ -20,8 +20,7 @@
 	<form action="execAddProduct.jsp" method="post">
 	<label>Id:</label>
 	<br>
-	<input type="number" id="id" name="id" value="<%=(list.size()+1)%>"
-		readonly>
+	<input type="number" id="id" name="id">
 	<br>
 	<label>Nombre:</label>
 	<br>

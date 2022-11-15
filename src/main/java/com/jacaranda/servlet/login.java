@@ -37,16 +37,7 @@ public class login extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    /**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-    //He tenido que crear el do get para que me redirija al login
-    //porque el boton añade por get siempre
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
-	}
-
+ 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -79,18 +70,17 @@ public class login extends HttpServlet {
 			//Si no entra en la condición anterior le añadimos la 
 			//contraseña cifrada y validamos
 			String pass=DigestUtils.md5Hex(request.getParameter("pass"));
-			UserDAO u=new UserDAO();
-			boolean us=u.validateUser(user, pass);
+			boolean us=UserDAO.validateUser(user, pass);
 			//Uso el aux para despues coger el get admin para comprobar
 			//Si es administrador
-			User aux=u.findUser(user);
+			User aux=UserDAO.findUser(user);
 			if (us) {
-				//Si valida la sesion me creo los dos 
+				//Si valida el usuario y la 
+				//Contraseña y creo los dos 
 				//atributos y los guardo en la sesion
 				sesion.setAttribute("user", user);
 				sesion.setAttribute("pass", pass);
-				ElementoDao d=new ElementoDao();
-				List<Elementos>l=d.devuelveConjunto();
+				List<Elementos>l=ElementoDao.devuelveConjunto();
 				StringBuilder s=new StringBuilder();
 						for (Elementos i:l) {
 							s.append("<tr>"
@@ -159,10 +149,8 @@ public class login extends HttpServlet {
 			//Si el atributo de la sesion no es nulo lo recupero y 
 			//Le muestro el menu
 		}else {
-			UserDAO u=new UserDAO();
-			User aux=u.findUser((String)sesion.getAttribute("user"));
-			ElementoDao d=new ElementoDao();
-			List<Elementos>l=d.devuelveConjunto();
+			User aux=UserDAO.findUser((String)sesion.getAttribute("user"));
+			List<Elementos>l=ElementoDao.devuelveConjunto();
 			StringBuilder s=new StringBuilder();
 					for (Elementos i:l) {
 						s.append("<tr>"

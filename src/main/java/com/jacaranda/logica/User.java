@@ -23,7 +23,7 @@ public User(String users, String pass, String name,String email, LocalDate dateB
 	this.pass = pass;
 	this.name = name;
 	this.email=email;
-	this.dateBirthday = dateBirthday;
+	this.dateBirthday = dateBirthday.plusDays(1);
 	this.gender = gender;
 	this.admin = admin;
 }

@@ -8,14 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Productos</title>
+<link rel="stylesheet" href="./css/add.css">
 </head>
 <body>
 
 	<%
-	ElementoDao n = new ElementoDao();
-	List<Elementos> list = n.devuelveConjunto();
-	CategoriaDao c=new CategoriaDao();
-	List<Categoria> lista = c.devuelveCategoria();
+	List<Elementos> list = ElementoDao.devuelveConjunto();
+	List<Categoria> lista = CategoriaDao.devuelveCategoria();
 	%>
 	<form action="execAddProduct.jsp" method="post">
 	<label>Id:</label>
@@ -32,15 +31,15 @@
 	<br>
 	<label>Price:</label>
 	<br>
-	<input type="number" id="price" name="price" step="any" required>
+	<input type="number" id="price" name="price" step="any" max="999.99" required>
 	<br>
 	<label>Categoria:</label>
 	<br>
 	<select id="lista" name="lista">
 	<%for (Categoria item:lista){ %>
-	<option value="<%=item.getId()%>"><%=item.getName()%></option>
+	<option id="opt" value="<%=item.getId()%>"><%=item.getName()%></option>
 	<%} %>
-	</select>
+	</select><br>
 	<input type="submit" id="butt">
 	</form>
 	

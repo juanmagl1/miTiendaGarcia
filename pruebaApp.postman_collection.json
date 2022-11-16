@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "db996d41-0687-44e2-ab26-408721f5071b",
+		"name": "pruebaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24408662"
+	},
+	"item": [
+		{
+			"name": "pruebaLoginConContraseñaNula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/login?pass=juanma",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"login"
+					],
+					"query": [
+						{
+							"key": "pass",
+							"value": "juanma"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaLoginConUsuarioNulo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/login?nom=juanma",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"login"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "juanma"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaLoginConUCredencialesIncorrectas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/login?nom=rafae&pass=fali",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"login"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "rafae"
+						},
+						{
+							"key": "pass",
+							"value": "fali"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaLoginConUCredencialesCorrectas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/login?nom=juanma&pass=juanma",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"login"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "juanma"
+						},
+						{
+							"key": "pass",
+							"value": "juanma"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaRegisterConUCredencialesNulas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/register?nom=juanma&pass=juanma",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"register"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "juanma"
+						},
+						{
+							"key": "pass",
+							"value": "juanma"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaRegisterConUsuarioExistente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/register?user=juanma&pass=juanma&corr=jm&date=2022-11-17&sex=H&nom=yoni",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"register"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "juanma"
+						},
+						{
+							"key": "pass",
+							"value": "juanma"
+						},
+						{
+							"key": "corr",
+							"value": "jm"
+						},
+						{
+							"key": "date",
+							"value": "2022-11-17"
+						},
+						{
+							"key": "sex",
+							"value": "H"
+						},
+						{
+							"key": "nom",
+							"value": "yoni"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaRegisterConUsuarioNuevo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/register?user=javi&pass=juanma&corr=jm&date=2022-11-17&sex=H&nom=javi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"register"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "javi"
+						},
+						{
+							"key": "pass",
+							"value": "juanma"
+						},
+						{
+							"key": "corr",
+							"value": "jm"
+						},
+						{
+							"key": "date",
+							"value": "2022-11-17"
+						},
+						{
+							"key": "sex",
+							"value": "H"
+						},
+						{
+							"key": "nom",
+							"value": "javi"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaAddConElementoNulo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/execAddProduct.jsp?id=0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"execAddProduct.jsp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaAddConElementoConIdRepetido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/execAddProduct.jsp?id=40&name=morph&price=27.0&lista=1&description=mamona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"execAddProduct.jsp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "40"
+						},
+						{
+							"key": "name",
+							"value": "morph"
+						},
+						{
+							"key": "price",
+							"value": "27.0"
+						},
+						{
+							"key": "lista",
+							"value": "1"
+						},
+						{
+							"key": "description",
+							"value": "mamona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pruebaAddConElementoCorrecto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tiendaMedicamentos/execAddProduct.jsp?id=98&name=morphi&price=27.0&lista=1&description=sirve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tiendaMedicamentos",
+						"execAddProduct.jsp"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "98"
+						},
+						{
+							"key": "name",
+							"value": "morphi"
+						},
+						{
+							"key": "price",
+							"value": "27.0"
+						},
+						{
+							"key": "lista",
+							"value": "1"
+						},
+						{
+							"key": "description",
+							"value": "sirve"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

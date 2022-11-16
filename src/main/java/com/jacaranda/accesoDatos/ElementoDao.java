@@ -39,11 +39,12 @@ public class ElementoDao {
 		}
 		return valid;
 	}
-	public static User findElement(int id) {
-		User aux=null;
+	public static Elementos findElement(int id) {
+		
 		Session sesion=ConnectionBD.getSession();
-		aux=sesion.get(User.class, id);
+		Elementos aux = sesion.get(Elementos.class, id);
 		return aux;
+
 	}
 
 }

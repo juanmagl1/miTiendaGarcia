@@ -6,40 +6,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="stylesheet" href="./css/add.css">
+<title>Actualizado</title>
 </head>
 <body>
-	<%int id=Integer.parseInt(request.getParameter("id"));
-	String name=request.getParameter("name");
-	double price=Double.parseDouble(request.getParameter("price"));
-	int idCat=Integer.parseInt(request.getParameter("lista"));
-	String description=request.getParameter("description");
-	try {
-		CategoriaDao cat=new CategoriaDao();
-		Categoria c=cat.findCategoria(idCat);
-		//Tengo puesto si es nulo name y desc porque los numericos se ponen a 0
-		if (name==null||description==null ){
+	<%
+		
+		if (request.getParameter("id")==null||request.getParameter("name")==null||request.getParameter("price")==null||request.getParameter("lista")==null){
 			out.write("Error no puedes meter elementos nulos");
 		}else {
-			Elementos n=new Elementos(id,name,description,price,c);
-			ElementoDao d=new ElementoDao();
-			if (d.findElement(id)==null){
-				boolean add=d.addElemento(n);
-				if (add){
-					out.print("Elemento añadido con éxito");
-				}else {
-					out.print("No se pudo añadir el producto");
-				}
+			int id=Integer.parseInt(request.getParameter("id"));
+			String name=request.getParameter("name");
+			double price=Double.parseDouble(request.getParameter("price"));
+			int idCat=Integer.parseInt(request.getParameter("lista"));
+			String description=request.getParameter("description");
+				Categoria c=CategoriaDao.findCategoria(idCat);
+			if (ElementoDao.findElement(id)==null){
+				Elementos n=new Elementos(id,name,description,price,c);
+				boolean add=ElementoDao.addElemento(n);
+				out.print("Elemento añadido con éxito");
 			}else {
-				out.write("Error no se puede añadir el elemento porque ya existe uno con ese id");
+				out.write("No se puede añadir un elemento con ese id");
 			}
 			
-		}
-	}catch (Exception e){
-		out.write("Hay un problema con la base de datos");
-	}
+				
+			}
+			
+		HttpSession sesion=request.getSession();
+		String user=(String)sesion.getAttribute("user");
 	
 	%>
-	<a href="login">Volver</a>
+	<form action="login" method="POST">
+	<input type="text" value="<%=user%>" hidden="">
+	<input type="submit" value="volver">
+	</form>
 </body>
 </html>

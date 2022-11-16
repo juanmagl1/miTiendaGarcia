@@ -1,0 +1,34 @@
+@charset "UTF-8";
+body{
+	background-image:url("https://elglobal.es/wp-content/uploads/2020/02/GettyImages-949947192-scaled.jpg");
+	height: 100vh;
+	margin:0;
+}
+
+.container {
+	display:grid;
+	grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas:"header header header"
+    					".  form  ."
+    					"footer footer footer"
+    					;
+}
+
+.form{
+	grid-area:form;
+	border: 1px solid black;
+	padding: 20px;
+	width:300px;
+	margin-left:80px;
+	background-color: white;
+}
+.header{
+	grid-area:header;
+}
+input{
+	margin-bottom: 10px;
+}
+label,a{
+	font-family: arial;
+}

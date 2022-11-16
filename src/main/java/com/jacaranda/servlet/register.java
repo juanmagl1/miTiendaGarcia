@@ -41,11 +41,26 @@ public class register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String pass=DigestUtils.md5Hex(request.getParameter("pass"));
-		boolean b=UserDAO.addUser(new User(request.getParameter("user"),pass,request.getParameter("nom"),request.getParameter("corr"),LocalDate.parse(request.getParameter("date")),request.getParameter("sex").charAt(0),false));
-		if (b) {
-			List<Elementos>l=ElementoDao.devuelveConjunto();
-			StringBuilder s=new StringBuilder();
+		if (request.getParameter("user")==null||request.getParameter("pass")==null||request.getParameter("nom")==null||request.getParameter("corr")==null||request.getParameter("date")==null||request.getParameter("sex")==null) {
+			response.getWriter().append("<!DOCTYPE html>\r\n"
+					+ "<html>\r\n"
+					+ "<head>\r\n"
+					+ "    <title>Document</title>\r\n"
+					+ "</head>\r\n"
+					+ "<body>\r\n"
+					+ "  <h1>Error no puedes meter elementos nulos</h1>\r\n"
+					+ "  <button type=\"submit\"><a href=\"index.jsp\">Volver atrás</a></button>\r\n"
+					+ "</body>\r\n"
+					+ "</html>");
+		}else {
+			String user=request.getParameter("user");
+			String pass=DigestUtils.md5Hex(request.getParameter("pass"));
+			User aux=UserDAO.findUser(user);
+			if (aux==null) {
+				boolean b=UserDAO.addUser(new User(user,pass,request.getParameter("nom"),request.getParameter("corr"),LocalDate.parse(request.getParameter("date")),request.getParameter("sex").charAt(0),false));
+				if (b) {
+					List<Elementos>l=ElementoDao.devuelveConjunto();
+					StringBuilder s=new StringBuilder();
 					for (Elementos i:l) {
 						s.append("<tr>"
 								+"<td>"+i.getId()+"</td>"
@@ -55,24 +70,37 @@ public class register extends HttpServlet {
 								+ "<td>"+ i.getid_Categoria().getName() +"</td>"
 								);
 					}
-						response.getWriter().append("<!DOCTYPE html>\r\n"
-								+ "<html>\r\n"
-								+ "<head>\r\n"
-								+ "    <title>Elementos</title>\r\n"
-								+ "</head>\r\n"
-								+ "<body>\r\n"
-								+ "    <table border=\"1\">\r\n"
-								+ "        <tr>\r\n"
-								+ "            <th>Id</th>\r\n"
-								+ "            <th>Name</th>\r\n"
-								+ "            <th>Description</th>\r\n"
-								+ "            <th>Price</th>\r\n"
-								+ "            <th>Category</th>\r\n"
-								+ "        </tr>\r\n"
-								+ s
-								+ "    </table>\r\n"
-								+ "</body>\r\n"
-								+ "</html>");
+					response.getWriter().append("<!DOCTYPE html>\r\n"
+							+ "<html>\r\n"
+							+ "<head>\r\n"
+							+ "    <title>Elementos</title>\r\n"
+							+ "</head>\r\n"
+							+ "<body>\r\n"
+							+ "    <table border=\"1\">\r\n"
+							+ "        <tr>\r\n"
+							+ "            <th>Id</th>\r\n"
+							+ "            <th>Name</th>\r\n"
+							+ "            <th>Description</th>\r\n"
+							+ "            <th>Price</th>\r\n"
+							+ "            <th>Category</th>\r\n"
+							+ "        </tr>\r\n"
+							+ s
+							+ "    </table>\r\n"
+							+ "</body>\r\n"
+							+ "</html>");
+				}
+			}else {
+				response.getWriter().format("<!DOCTYPE html>\r\n"
+						+ "<html lang=\"en\">\r\n"
+						+ "<head>\r\n"
+						+ "    <title>Document</title>\r\n"
+						+ "</head>\r\n"
+						+ "<body>\r\n"
+						+ "    <h1>No se puede añadir uno con ese user porque ya existe</h1>\r\n"
+						+ "</body>\r\n"
+						+ "</html>");
+			}
+			
 		}
 	}
 }

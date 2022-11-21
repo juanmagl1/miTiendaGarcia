@@ -14,10 +14,21 @@ public class Elementos {
 	private String name;
 	private String description;
 	private double price;
+	private int stock;
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private Categoria id_categoria;
 
+	public Elementos(int id, String name, String description, double price, int stock, Categoria id_categoria) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.stock=stock;
+		this.id_categoria = id_categoria;
+	}
+	
 	public Elementos(int id, String name, String description, double price, Categoria id_categoria) {
 		super();
 		this.id = id;

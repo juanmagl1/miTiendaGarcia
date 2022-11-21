@@ -21,6 +21,7 @@ create table MEDICAMENTOS.ELEMENTOS (
 	name VARCHAR(250),
 	description VARCHAR(400),
 	price DECIMAL(5,2),
+	stock INT(5),
 	id_categoria INT,
 	CONSTRAINT fk_cat FOREIGN KEY (id_categoria) REFERENCES MEDICAMENTOS.CATEGORIA (id)
 );
@@ -29,8 +30,8 @@ CREATE TABLE MEDICAMENTOS.COMPRA (
 id_elemento int,
 users varchar(50),
 price DECIMAL(5,2),
-dateBirthday DATE,
-CONSTRAINT pk_med PRIMARY KEY (id_elemento,users),
+dateBuy DATE,
+CONSTRAINT pk_med PRIMARY KEY (id_elemento,users,dateBuy),
 CONSTRAINT fk_user FOREIGN KEY (users) REFERENCES MEDICAMENTOS.USUARIOS (users),
 CONSTRAINT fk_elem FOREIGN KEY (id_elemento) REFERENCES MEDICAMENTOS.ELEMENTOS (id)
 );

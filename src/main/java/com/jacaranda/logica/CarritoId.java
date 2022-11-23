@@ -7,14 +7,14 @@ import java.util.Objects;
 public class CarritoId implements Serializable {
 	private String usuario;
 	private int elemento;
-	private LocalDate fecha;
+	private LocalDate dateBuy;
 	
-	public LocalDate getFecha() {
-		return fecha;
+	public LocalDate getdateBuy() {
+		return dateBuy;
 	}
 
-	public void setFecha(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setFechaCompra(LocalDate dateBuy) {
+		this.dateBuy = dateBuy;
 	}
 
 	public CarritoId() {

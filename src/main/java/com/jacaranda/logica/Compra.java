@@ -14,17 +14,16 @@ import javax.persistence.ManyToOne;
 public class Compra {
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "id_elemento", insertable = false, updatable = false)
+	@JoinColumn(name = "users", insertable = false, updatable = false)
 	private User usuario;
 
 	@Id
 	@ManyToOne
-	@JoinColumn(name = "users", insertable = false, updatable = false)
+	@JoinColumn(name = "id_elemento", insertable = false, updatable = false)
 	private Elementos elemento;
 
 	@Id
-	@JoinColumn(name = "dateBuy", insertable = false, updatable = false)
-	private LocalDate fecha;
+	private LocalDate dateBuy;
 	
 	private int amount;
 	private double price;
@@ -33,7 +32,7 @@ public class Compra {
 		super();
 		this.usuario = usuario;
 		this.elemento = elemento;
-		this.fecha = LocalDate.now();
+		this.dateBuy = LocalDate.now();
 		this.amount = amount;
 		this.price = price;
 	}
@@ -58,12 +57,12 @@ public class Compra {
 		this.elemento = elemento;
 	}
 
-	public LocalDate getFechaCompra() {
-		return fecha;
+	public LocalDate getDateBuy() {
+		return dateBuy;
 	}
 
-	public void setFechaCompra(LocalDate fecha) {
-		this.fecha = fecha;
+	public void setFechaCompra(LocalDate fechaCompra) {
+		this.dateBuy = fechaCompra;
 	}
 
 	public int getAmount() {
@@ -84,7 +83,7 @@ public class Compra {
 
 	@Override
 	public String toString() {
-		return "Compra [usuario=" + usuario + ", elemento=" + elemento + ", fechaCompra=" + fecha + "]";
+		return "Compra [usuario=" + usuario + ", elemento=" + elemento + ", fechaCompra=" + dateBuy + "]";
 	}
 	
 	

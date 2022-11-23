@@ -1,5 +1,6 @@
 package com.jacaranda.logica;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity (name="COMPRA")
 @IdClass(CarritoId.class)
 public class Compra {
 	@Id
@@ -22,18 +23,17 @@ public class Compra {
 	private Elementos elemento;
 
 	@Id
-	@ManyToOne
 	@JoinColumn(name = "dateBuy", insertable = false, updatable = false)
-	private LocalDateTime fechaCompra;
+	private LocalDate fecha;
 	
 	private int amount;
-	private int price;
+	private double price;
 	
-	public Compra(User usuario, Elementos elemento, LocalDateTime fechaCompra, int amount, int price) {
+	public Compra(User usuario, Elementos elemento, int amount, double price) {
 		super();
 		this.usuario = usuario;
 		this.elemento = elemento;
-		this.fechaCompra = fechaCompra;
+		this.fecha = LocalDate.now();
 		this.amount = amount;
 		this.price = price;
 	}
@@ -41,6 +41,52 @@ public class Compra {
 	public Compra() {
 		super();
 	}
+
+	public User getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(User usuario) {
+		this.usuario = usuario;
+	}
+
+	public Elementos getElemento() {
+		return elemento;
+	}
+
+	public void setElemento(Elementos elemento) {
+		this.elemento = elemento;
+	}
+
+	public LocalDate getFechaCompra() {
+		return fecha;
+	}
+
+	public void setFechaCompra(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Compra [usuario=" + usuario + ", elemento=" + elemento + ", fechaCompra=" + fecha + "]";
+	}
+	
 	
 	
 

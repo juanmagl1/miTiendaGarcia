@@ -82,7 +82,7 @@ public class login extends HttpServlet {
 					for (Elementos i : l) {
 						s.append("<tr>" + "<td>" + i.getId() + "</td>" + "<td>" + i.getName() + "</td>" + "<td>"
 								+ i.getDescription() + "</td>" + "<td>" + i.getPrice() + "</td>" + "<td>"
-								+ i.getid_Categoria().getName() + "</td>");
+								+ i.getid_Categoria().getName() + "</td>"+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\">"+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>");
 					}
 					// Si el usuario es admin le añado el boton de addProduct
 					if (aux.isAdmin()) {
@@ -96,6 +96,7 @@ public class login extends HttpServlet {
 													+ "    <table border=\"1\">\r\n" + "        <tr>\r\n" + "            <th>Id</th>\r\n"
 													+ "            <th>Name</th>\r\n" + "            <th>Description</th>\r\n"
 													+ "            <th>Price</th>\r\n" + "            <th>Category</th>\r\n"
+													+"<th> Botones </th>\r\n"
 													+ "        </tr>\r\n" + s + "    </table>\r\n" + "</body>\r\n" + "</html>");
 					}else {
 						
@@ -114,6 +115,7 @@ public class login extends HttpServlet {
 								+ "            <th>Description</th>\r\n"
 								+ "            <th>Price</th>\r\n"
 								+ "            <th>Category</th>\r\n"
+								+"<th>Botones</th>"
 								+ "        </tr>\r\n"
 								+ s
 								+ "    </table>\r\n"
@@ -150,6 +152,7 @@ public class login extends HttpServlet {
 									+"<td>"+i.getDescription()+"</td>"
 									+"<td>"+i.getPrice()+"</td>"
 									+ "<td>"+ i.getid_Categoria().getName() +"</td>"
+									+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\">"+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>"
 									);
 						}
 				if (aux.isAdmin()) {
@@ -169,6 +172,7 @@ public class login extends HttpServlet {
 							+ "            <th>Description</th>\r\n"
 							+ "            <th>Price</th>\r\n"
 							+ "            <th>Category</th>\r\n"
+							+"<th>Botones</th>"
 							+ "        </tr>\r\n"
 							+ s
 							+ "    </table>\r\n"
@@ -191,6 +195,7 @@ public class login extends HttpServlet {
 							+ "            <th>Description</th>\r\n"
 							+ "            <th>Price</th>\r\n"
 							+ "            <th>Category</th>\r\n"
+							+"<th>Botones</th>"
 							+ "        </tr>\r\n"
 							+ s
 							+ "    </table>\r\n"

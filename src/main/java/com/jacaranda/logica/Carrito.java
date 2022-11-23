@@ -1,21 +1,21 @@
 package com.jacaranda.logica;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Carrito {
-	private List<ItemCarrito> carro;
+	private ArrayList<ItemCarrito> carro;
 
 	public Carrito() {
 		super();
-		carro = null;
+		carro = new ArrayList<ItemCarrito>();
 
 	}
 
-	public List<ItemCarrito> getCarro() {
+	public ArrayList<ItemCarrito> getCarro() {
 		return carro;
 	}
 	public boolean add(ItemCarrito i) {
-		return carro.add(i); 
+		return this.carro.add(i);
 	}
 
 }

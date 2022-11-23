@@ -1,19 +1,19 @@
 package com.jacaranda.logica;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class CarritoId implements Serializable {
 	private String usuario;
 	private int elemento;
-	private LocalDateTime fecha;
+	private LocalDate fecha;
 	
-	public LocalDateTime getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(LocalDateTime fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 

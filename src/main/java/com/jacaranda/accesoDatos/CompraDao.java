@@ -3,7 +3,7 @@ package com.jacaranda.accesoDatos;
 import org.hibernate.Session;
 
 import com.jacaranda.logica.Compra;
-import com.jacaranda.logica.ItemCarrito;
+
 
 public class CompraDao {
 
@@ -20,8 +20,8 @@ public class CompraDao {
 			sesion.getTransaction().commit();
 			buy=true;
 		}catch (Exception e) {
-			sesion.getTransaction().rollback();
 			e.getMessage();
+			sesion.getTransaction().rollback();
 			
 		}
 		return buy;

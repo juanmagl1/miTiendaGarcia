@@ -30,7 +30,7 @@ public void setCant(int cant) {
 
 @Override
 public int hashCode() {
-	return Objects.hash(cant, id_Element);
+	return Objects.hash(id_Element);
 }
 
 @Override
@@ -42,8 +42,10 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	ItemCarrito other = (ItemCarrito) obj;
-	return cant == other.cant && id_Element == other.id_Element;
+	return id_Element == other.id_Element;
 }
+
+
 
 
 }

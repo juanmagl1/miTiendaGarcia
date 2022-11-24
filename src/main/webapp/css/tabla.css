@@ -1,7 +1,8 @@
 @charset "UTF-8";
 body{
 	background-image:url("https://elglobal.es/wp-content/uploads/2020/02/GettyImages-949947192-scaled.jpg");
-	background-repeat:no-repeat;
+	position:sticky;
+	top:0;
 	height: 100%;
 }
 

@@ -46,6 +46,18 @@ public class Elementos {
 		return id;
 	}
 
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public Categoria getId_categoria() {
+		return id_categoria;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

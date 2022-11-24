@@ -19,9 +19,12 @@
 	boolean compra=false;
 	for (ItemCarrito i : c.getCarro()) {
 		Elementos e=ElementoDao.findElement(i.getId_Element());
+		int stockCompra=e.getStock()-i.getCant();
+		e.setStock(stockCompra);
 		double precio=e.getPrice()*i.getCant();
 		Compra com=new Compra(u,e,i.getCant(),precio);
 		compra=CompraDao.addCompra(com);
+		boolean ann=ElementoDao.addElemento(e);
 	}
 	%>
 </body>

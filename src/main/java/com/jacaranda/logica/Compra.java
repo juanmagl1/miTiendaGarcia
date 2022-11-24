@@ -23,7 +23,7 @@ public class Compra {
 	private Elementos elemento;
 
 	@Id
-	private LocalDate dateBuy;
+	private LocalDateTime dateBuy;
 	
 	private int amount;
 	private double price;
@@ -32,7 +32,7 @@ public class Compra {
 		super();
 		this.usuario = usuario;
 		this.elemento = elemento;
-		this.dateBuy = LocalDate.now();
+		this.dateBuy = LocalDateTime.now();
 		this.amount = amount;
 		this.price = price;
 	}
@@ -57,11 +57,11 @@ public class Compra {
 		this.elemento = elemento;
 	}
 
-	public LocalDate getDateBuy() {
+	public LocalDateTime getDateBuy() {
 		return dateBuy;
 	}
 
-	public void setFechaCompra(LocalDate fechaCompra) {
+	public void setFechaCompra(LocalDateTime fechaCompra) {
 		this.dateBuy = fechaCompra;
 	}
 

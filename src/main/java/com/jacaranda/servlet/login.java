@@ -44,6 +44,21 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String cabecera="<!DOCTYPE html>\r\n"
+				+ "<html>\r\n"
+				+ "<head>\r\n"
+				+ "	<title>Login</title>\r\n"
+				+ "	<link rel=\"stylesheet\" href=\"./css/tabla.css\">\r\n"
+				+ "</head>";
+		String tabla="<table border=\"1\">\r\n"
+				+ "		<tr>\r\n"
+				+ "			<th>Id</th>\r\n"
+				+ "			<th>name</th>\r\n"
+				+ "			<th>Description</th>\r\n"
+				+ "			<th>Price</th>\r\n"
+				+ "			<th>Category</th>\r\n"
+				+ "			<th>Botones</th>	\r\n"
+				+ "		</tr>";
 		// Recupero la sesion
 		HttpSession sesion = request.getSession();
 		// Meto el atributo user en una variable
@@ -86,37 +101,24 @@ public class login extends HttpServlet {
 					}
 					// Si el usuario es admin le añado el boton de addProduct
 					if (aux.isAdmin()) {
-						response.getWriter().append("<!DOCTYPE html>\r\n" 
-													+ "<html>\r\n" + "<head>\r\n"
-													+ "<link rel=\"stylesheet\" href=\"./css/tabla.css\">\r\n"
-													+ "<title>Elementos</title>\r\n" 
-													+ "</head>\r\n" + "<body>\r\n"
-													+ "  <button><a href=\"addProduct.jsp\">Añadir Elemento</a></button>\r\n"
-													+ "  <button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
-													+ "    <table border=\"1\">\r\n" + "        <tr>\r\n" + "            <th>Id</th>\r\n"
-													+ "            <th>Name</th>\r\n" + "            <th>Description</th>\r\n"
-													+ "            <th>Price</th>\r\n" + "            <th>Category</th>\r\n"
-													+"<th> Botones </th>\r\n"
+						String cuerpo="<body>\r\n"
+								+ "	<header class=\"header\">\r\n"
+								+ "		<p>"+user+"</p>\r\n"
+								+ "	</header>\r\n"
+								+ "	<button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
+								+ "	<button><a href=\"ComprasPorUsuario.jsp\">Ver compras</a></button>\r\n"
+								+ "	<button><a href=\"addProduct.jsp\">Añadir producto</a></button>";
+						response.getWriter().append(cabecera+ cuerpo + tabla
 													+ "        </tr>\r\n" + s + "    </table>\r\n" + "</body>\r\n" + "</html>");
 					}else {
-						
-						response.getWriter().append("<!DOCTYPE html>\r\n"
-								+ "<html>\r\n"
-								+ "<head>\r\n"
-								+ "<link rel=\"stylesheet\" href=\"./css/tabla.css\">\r\n"
-								+ "    <title>Elementos</title>\r\n"
-								+ "</head>\r\n"
-								+ "<body>\r\n"
-								+ "  <button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
-								+ "    <table border=\"1\">\r\n"
-								+ "        <tr>\r\n"
-								+ "            <th>Id</th>\r\n"
-								+ "            <th>Name</th>\r\n"
-								+ "            <th>Description</th>\r\n"
-								+ "            <th>Price</th>\r\n"
-								+ "            <th>Category</th>\r\n"
-								+"<th>Botones</th>"
-								+ "        </tr>\r\n"
+						String cuerpo="<body>\r\n"
+								+ "	<header class=\"header\">\r\n"
+								+ "		<p>"+user+"</p>\r\n"
+								+ "	</header>\r\n"
+								+ "	<button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
+								+ "	<button><a href=\"ComprasPorUsuario.jsp\">Ver compras</a></button>\r\n";
+						response.getWriter().append(cabecera+cuerpo+tabla
+								+ "</tr>\r\n"
 								+ s
 								+ "    </table>\r\n"
 								+ "</body>\r\n"
@@ -156,53 +158,32 @@ public class login extends HttpServlet {
 									);
 						}
 				if (aux.isAdmin()) {
-					response.getWriter().append("<!DOCTYPE html>\r\n"
-							+ "<html>\r\n"
-							+ "<head>\r\n"
-							+ "<link rel=\"stylesheet\" href=\"./css/tabla.css\">\r\n"
-							+ "    <title>Elementos</title>\r\n"
-							+ "</head>\r\n"
-							+ "<body>\r\n"
-							+ "  <button><a href=\"addJugadores.jsp\">Añadir Elemento</a></button>\r\n"
-							+ "  <button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
-							+ "    <table border=\"1\">\r\n"
-							+ "        <tr>\r\n"
-							+ "            <th>Id</th>\r\n"
-							+ "            <th>Name</th>\r\n"
-							+ "            <th>Description</th>\r\n"
-							+ "            <th>Price</th>\r\n"
-							+ "            <th>Category</th>\r\n"
-							+"<th>Botones</th>"
-							+ "        </tr>\r\n"
+					String cuerpo="<body>\r\n"
+							+ "	<header class=\"header\">\r\n"
+							+ "		<p>"+aux.getName()+"</p>\r\n"
+							+ "	</header>\r\n"
+							+ "	<button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
+							+ "	<button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
+							+ "	<button><a href=\"ComprasPorUsuario.jsp\">Ver compras</a></button>\r\n";
+					response.getWriter().append(cabecera+ cuerpo + tabla
 							+ s
 							+ "    </table>\r\n"
 							+ "</body>\r\n"
 							+ "</html>");
 				}else {
-							
-					response.getWriter().append("<!DOCTYPE html>\r\n"
-							+ "<html>\r\n"
-							+ "<head>\r\n"
-							+ "<link rel=\"stylesheet\" href=\"./css/tabla.css\">\r\n"
-							+ "    <title>Elementos</title>\r\n"
-							+ "</head>\r\n"
-							+ "<body>\r\n"
-							+ "  <button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
-							+ "    <table border=\"1\">\r\n"
-							+ "        <tr>\r\n"
-							+ "            <th>Id</th>\r\n"
-							+ "            <th>Name</th>\r\n"
-							+ "            <th>Description</th>\r\n"
-							+ "            <th>Price</th>\r\n"
-							+ "            <th>Category</th>\r\n"
-							+"<th>Botones</th>"
-							+ "        </tr>\r\n"
+					String cuerpo="<body>\r\n"
+							+ "	<header class=\"header\">\r\n"
+							+ "		<p>"+aux.getName()+"</p>\r\n"
+							+ "	</header>\r\n"
+							+ "	<button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
+							+ "	<button><a href=\"ComprasPorUsuario.jsp\">Ver compras</a></button>\r\n";
+					response.getWriter().append(cabecera+ cuerpo + tabla
 							+ s
-							+ "    </table>\r\n"
+							+ "</table>\r\n"
 							+ "</body>\r\n"
 							+ "</html>");
 				}
 			}
 
 	}
-}
+	}

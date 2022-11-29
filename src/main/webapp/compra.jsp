@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>Compra realizada con exito</h1>
 	<%
 	HttpSession sesion = request.getSession();
 	Carrito c = (Carrito) sesion.getAttribute("carrito");
@@ -26,6 +27,12 @@
 		compra=CompraDao.addCompra(com);
 		boolean ann=ElementoDao.addElemento(e);
 	}
+	c.getCarro().clear();
+	
 	%>
+	<form action="login" method="POST">
+	<input type="text" value="<%=user%>" hidden="">
+	<input type="submit" value="volver">
+	</form>
 </body>
 </html>

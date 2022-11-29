@@ -16,15 +16,16 @@ create table MEDICAMENTOS.CATEGORIA (
 	description VARCHAR(50)
 );
 
-create table MEDICAMENTOS.ELEMENTOS (
-	id INT PRIMARY KEY,
-	name VARCHAR(250),
-	description VARCHAR(400),
+create table MEDICAMENTOS.MEDICAMENTOS.ELEMENTOS (
+	id_categoria INT PRIMARY KEY,
+	name VARCHAR(50),
+	description VARCHAR(50),
 	price DECIMAL(5,2),
-	stock INT(5),
-	id_categoria INT,
+	id_Categoria INT,
+	stock INT,
 	CONSTRAINT fk_cat FOREIGN KEY (id_categoria) REFERENCES MEDICAMENTOS.CATEGORIA (id)
 );
+
 
 CREATE TABLE MEDICAMENTOS.COMPRA (
 id_elemento int,
@@ -33,7 +34,7 @@ price DECIMAL(5,2),
 dateBuy DATE,
 CONSTRAINT pk_med PRIMARY KEY (id_elemento,users,dateBuy),
 CONSTRAINT fk_user FOREIGN KEY (users) REFERENCES MEDICAMENTOS.USUARIOS (users),
-CONSTRAINT fk_elem FOREIGN KEY (id_elemento) REFERENCES MEDICAMENTOS.ELEMENTOS (id)
+CONSTRAINT fk_elem FOREIGN KEY (id_elemento) REFERENCES MEDICAMENTOS.MEDICAMENTOS.ELEMENTOS (id)
 );
 
 /*insertamos los datos*/
@@ -64,106 +65,106 @@ insert into MEDICAMENTOS.CATEGORIA (id, name, description) values (23, 'Greensto
 insert into MEDICAMENTOS.CATEGORIA (id, name, description) values (24, 'Terjan Co., Inc. DBA Valley Welding Supply Company', 'Ameliorated contextually-based solution');
 insert into MEDICAMENTOS.CATEGORIA (id, name, description) values (25, 'Syntrion GmbH', 'Switchable solution-oriented extranet');
 
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (1, 'Topotecan', 'De-engineered local secured line', 72.17, 23);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (2, 'Topiramate', 'Re-contextualized cohesive orchestration', 186.89, 23);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (3, 'Alendronate Sodium', 'User-friendly directional access', 187.97, 20);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (4, 'Pravastatin Sodium', 'Front-line human-resource model', 309.47, 10);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (5, 'Risperidone', 'Digitized intermediate workforce', 211.17, 7);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (6, 'TREXIMET', 'Ergonomic leading edge approach', 66.92, 23);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (7, 'Calcium Acetate', 'Future-proofed grid-enabled structure', 101.36, 4);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (8, 'Therabenzaprine-90', 'Fully-configurable interactive instruction set', 396.23, 20);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (9, 'FANAPT', 'Profound leading edge function', 38.79, 8);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (10, 'Acetadryl', 'Cross-platform user-facing frame', 174.5, 22);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (11, 'Gemfibrozil', 'Exclusive context-sensitive project', 108.53, 14);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (12, 'Trihexyphenidyl Hydrochloride', 'Right-sized composite matrices', 39.53, 3);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (13, 'Extra Strength Pain Relief Therapy', 'Operative maximized moratorium', 307.68, 5);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (14, 'Arthritazin Pain Relieving', 'Multi-channelled contextually-based process improvement', 83.23, 23);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (15, 'Givenchy Photo Perfexion Fluid Foundation SPF 20 Perfect Ivory Tint 1', 'Networked next generation moratorium', 29.82, 4);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (16, 'Rejuvesol', 'Secured web-enabled utilisation', 223.41, 15);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (17, 'Antifungal', 'Optimized asynchronous infrastructure', 345.31, 10);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (18, 'ARNICA', 'Operative background workforce', 301.21, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (19, 'ADVIL', 'Reduced multi-tasking software', 238.69, 6);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (20, 'ERYTHROMYCIN', 'Realigned national capability', 332.15, 6);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (21, 'Donepezil Hydrochloride', 'Business-focused user-facing product', 201.72, 12);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (22, 'LAMICTAL', 'Grass-roots scalable core', 236.86, 14);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (23, 'tramadol hydrochloride', 'Assimilated incremental matrices', 60.35, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (24, 'Ecolab', 'Triple-buffered exuding toolset', 202.56, 20);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (25, 'CHAETOMIUM GLOBOSUM', 'Operative high-level projection', 331.07, 6);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (26, 'Oxygen', 'Public-key contextually-based encoding', 299.7, 21);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (27, 'Gabapentin', 'Stand-alone asymmetric policy', 398.07, 4);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (28, 'DIPYRIDAMOLE', 'Vision-oriented intermediate time-frame', 146.92, 21);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (29, 'OPANA', 'Synergistic client-server superstructure', 181.04, 11);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (30, 'lisinopril', 'Down-sized bottom-line function', 191.34, 24);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (31, 'METFORMIN HYDROCHLORIDE', 'Managed intangible intranet', 340.79, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (32, 'Gillette Clinical', 'Optional dynamic framework', 245.55, 16);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (33, 'Fludeoxyglucose F18', 'Self-enabling empowering monitoring', 346.97, 3);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (34, 'Viscumforce', 'Configurable bifurcated implementation', 31.48, 12);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (35, 'anti nausea', 'Digitized value-added productivity', 117.19, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (36, 'Proactiv Solution Extra Strength Formula Toner Acne Treatment', 'Progressive high-level benchmark', 339.86, 4);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (37, 'Duloxetine', 'Synergized background benchmark', 247.75, 22);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (38, 'Leucovorin Calcium', 'Decentralized national framework', 385.79, 15);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (39, 'Metabolic Support', 'Monitored hybrid solution', 327.96, 9);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (40, 'LEADER ORIGINAL FORMULA', 'Mandatory responsive knowledge base', 222.74, 4);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (41, 'Amlobenz', 'Multi-layered fault-tolerant moratorium', 262.98, 17);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (42, 'Oxygen', 'Ameliorated coherent encoding', 316.76, 8);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (43, 'Metformin Hydrochloride', 'Phased directional capability', 45.36, 8);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (44, 'Prandin', 'Compatible didactic structure', 331.84, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (45, 'Mesmerize for Men', 'Multi-channelled solution-oriented throughput', 271.01, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (46, 'Assured Childrens Cold and Cough', 'De-engineered human-resource emulation', 317.93, 7);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (47, 'DPT TOX', 'Advanced empowering internet solution', 388.32, 15);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (48, 'Alcohol Pad', 'Reactive homogeneous core', 43.5, 24);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (49, 'Neutrogena Revitalizing Lip Balm', 'Multi-tiered national portal', 6.06, 14);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (50, 'Otrexup', 'Open-source incremental superstructure', 100.66, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (51, 'Black Birch', 'Persevering methodical migration', 23.93, 21);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (52, 'Doxazosin', 'Cloned 5th generation website', 200.29, 6);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (53, 'Clove', 'Innovative dedicated implementation', 72.32, 21);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (54, 'Diovan', 'Object-based non-volatile functionalities', 311.33, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (55, 'HYDROCODONE BITARTRATE AND ACETAMINOPHEN', 'Persistent empowering standardization', 309.71, 15);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (56, 'New Terocin', 'Decentralized asynchronous knowledge base', 29.73, 12);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (57, 'Rite Aid Ultra Strength Muscle Rub', 'Grass-roots static parallelism', 147.95, 3);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (58, 'Atorvastatin Calcium', 'Stand-alone optimizing database', 202.83, 22);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (59, 'Pain Reliever', 'User-centric bandwidth-monitored flexibility', 241.13, 16);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (60, 'Oxacillin', 'Object-based 4th generation service-desk', 181.05, 19);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (61, 'Levothyroxine Sodium', 'Programmable tertiary hub', 350.81, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (62, 'Captopril', 'Face to face uniform open system', 122.45, 4);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (63, 'Motion Sickness Relief', 'Up-sized solution-oriented middleware', 321.46, 17);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (64, 'Oxymorphone Hydrochloride', 'Expanded stable secured line', 2.28, 8);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (65, 'Furosemide', 'Quality-focused multimedia paradigm', 285.93, 19);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (66, 'ESTRADIOL', 'Cloned analyzing synergy', 54.53, 11);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (67, 'Healthy Accents Stay Awake', 'Ameliorated national encryption', 160.76, 1);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (68, 'Rexall Nicotine', 'Object-based foreground moratorium', 100.51, 19);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (69, 'HAND SANITIZER', 'Virtual motivating encryption', 266.28, 2);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (70, 'Dr. Sheffield Psoriasis Medicated Moisturizer', 'Progressive attitude-oriented intranet', 251.73, 2);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (71, 'Escitalopram', 'User-friendly methodical architecture', 200.22, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (72, 'Azithromycin', 'Monitored human-resource framework', 343.8, 22);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (73, 'Childrens', 'Mandatory content-based moderator', 128.8, 11);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (74, 'SONGYUM New Pinesalt', 'Seamless optimal open system', 38.95, 14);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (75, 'Ropinirole', 'Fully-configurable solution-oriented groupware', 49.27, 5);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (76, 'Natural Cherry Honey Herb Throat Drops', 'Advanced value-added Graphical User Interface', 117.21, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (77, 'Chemdetox', 'Monitored zero defect emulation', 105.21, 10);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (78, 'Multi-Symptom Cold and Cough Daytime Nighttime', 'Synergized national methodology', 220.1, 20);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (79, 'Fentanyl Citrate, Bupivacaine HCl', 'Decentralized optimal internet solution', 373.69, 16);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (80, 'Nizatidine', 'Synergistic 24/7 extranet', 304.83, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (81, 'Perfect Purity Antibacterial Gold', 'Synergistic bandwidth-monitored leverage', 228.89, 18);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (82, 'OXYGEN', 'Configurable zero administration array', 158.46, 11);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (83, 'Glyburide', 'User-centric full-range orchestration', 326.48, 20);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (84, 'NABUMETONE', 'Configurable global collaboration', 90.3, 14);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (85, 'ARALIA QUINQUEFOLIA', 'Operative high-level customer loyalty', 194.53, 20);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (86, 'DECAVAC', 'Synchronised interactive definition', 195.76, 14);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (87, 'Ailanthus', 'Advanced multi-state collaboration', 392.88, 17);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (88, 'Glyburide', 'Public-key stable model', 81.88, 2);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (89, 'Nerve Plus Composition', 'Future-proofed global service-desk', 44.09, 2);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (90, 'SILVADENE', 'Decentralized modular budgetary management', 314.29, 1);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (91, 'COUMADIN', 'Synergistic next generation process improvement', 62.3, 11);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (92, 'ZOMIG', 'Realigned asymmetric pricing structure', 134.51, 24);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (93, 'Cubicin', 'User-centric mobile encoding', 114.07, 13);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (94, 'Sei Bella Age-Defying Liquid Foundation', 'Fully-configurable multi-state array', 286.88, 19);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (95, 'Cortisone Acetate', 'Robust human-resource algorithm', 384.96, 10);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (96, 'LubriFresh P.M.', 'Extended bottom-line capability', 289.04, 9);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (97, 'Corn Grain', 'Re-engineered cohesive secured line', 399.84, 3);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (98, 'Fluoxetine', 'Open-architected radical leverage', 329.55, 23);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (99, 'Allergy Get Relief', 'Devolved directional synergy', 81.52, 7);
-insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_categoria) values (100, 'Sinusitis', 'Polarised maximized success', 340.36, 3);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (1, 'Oxcarbazepine', 'Oxcarbazepine', 295.58, 21, 680);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (2, 'CVS Daily Pore Clearing Pads', 'SALICYLIC ACID', 57.47, 4, 732);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (3, 'Mesalamine', 'mesalamine', 166.17, 7, 40);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (4, 'Persantine', 'dipyridamole', 134.36, 10, 75);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (5, 'CLE DE PEAU BEAUTE GENTLE PROTECTIVE I', 'Ensulizole, Octinoxate, Octocrylene, and Oxybenzone', 116.04, 12, 680);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (6, 'Acetaminophen', 'Acetaminophen', 8.68, 22, 46);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (7, 'Stridex', 'Salicylic Acid', 117.84, 17, 498);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (8, 'Trandolapril', 'Trandolapril', 144.52, 14, 515);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (9, 'Argentum Malachite Athletes Foot Relief', 'Argentum Malachite Athletes Foot Relief', 7.18, 6, 912);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (10, 'Giorgio Armani Designer Lift Smoothing Firming Foundation Broad Spectrum SPF 20 Sunscreen', 'Octinoxate and Titanium dioxide', 94.1, 2, 183);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (11, 'QUETIAPINE FUMARATE', 'QUETIAPINE FUMARATE', 288.12, 5, 633);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (12, 'Meropenem', 'Meropenem', 290.12, 4, 525);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (13, 'Cortizone 10 Easy Relief', 'Hydrocortisone', 11.38, 8, 647);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (14, 'Fluconazole', 'Fluconazole', 189.32, 15, 763);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (15, 'Inapsine', 'Droperidol', 86.52, 15, 232);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (16, 'ESIKA', 'Octinoxate and Oxybenzone', 123.76, 20, 431);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (17, 'OXY Daily Defense Cleansing Pads', 'Salicylic Acid', 125.33, 11, 224);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (18, 'ELCURE CUREKIN', 'CENTELLA ASIATICA', 219.41, 10, 346);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (19, 'pain relief pm', 'Acetaminophen, Diphenhydramine HCl', 233.68, 17, 660);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (20, 'Captopril', 'Captopril', 33.59, 4, 406);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (21, 'Anti itch Topical Analgesic', 'Diphenhydramine Hydrochloride, Zinc Acetate', 156.57, 5, 469);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (22, 'CARE ONE', 'TRICLOSAN', 164.86, 25, 224);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (23, 'TRETIN.X', 'TRETINOIN', 147.88, 5, 860);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (24, 'CONCERTA', 'Methylphenidate hydrochloride', 193.28, 16, 406);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (25, 'KETOROLAC TROMETHAMINE', 'KETOROLAC TROMETHAMINE', 197.47, 18, 239);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (26, 'Pramoxine hydrochloride', 'Pramoxine hydrochloride', 42.46, 21, 917);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (27, 'TEMODAR', 'Temozolomide', 267.4, 21, 538);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (28, 'Metoclopramide', 'Metoclopramide Hydrochloride', 155.64, 16, 430);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (29, 'COREG', 'carvedilol', 181.91, 14, 310);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (30, 'Extra Strength Pain Reliever', 'Acetaminophen, Aspirin and caffeine', 150.16, 16, 710);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (31, 'Clonidine Hydrochloride', 'clonidine hydrochloride', 129.91, 19, 301);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (32, 'Albumin (Human)', 'Albumin Human', 203.0, 3, 523);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (33, 'Mirapex', 'pramipexole dihydrochloride', 166.88, 13, 891);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (34, 'Appeal Antibac', 'Triclosan', 138.53, 24, 967);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (35, 'EYE ITCH RELIEF', 'Ketotifen Fumarate', 212.77, 22, 421);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (36, 'ReCreate Foundation', 'Octinoxate, Octisalate, and Oxybenzone', 261.56, 6, 793);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (37, 'Terbutaline Sulfate', 'Terbutaline Sulfate', 59.79, 13, 966);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (38, 'Ceftriaxone Sodium', 'Ceftriaxone Sodium', 249.48, 1, 234);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (39, 'Torsemide', 'Torsemide', 136.26, 5, 928);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (40, 'Grama Grass', 'Grama Grass', 246.73, 16, 345);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (41, 'MECLIZINE HYDROCHLORIDE', 'Meclizine Hydrocloride', 102.81, 12, 723);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (42, 'Homeopathic Acne', 'Potassium hydrate, calcium sulphide, poison nut, cuttlefish ink', 115.14, 16, 758);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (43, 'Treatment Set TS340054', 'Treatment Set TS340054', 136.66, 16, 343);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (44, 'Virginia Live Oak', 'Virginia Live Oak', 88.68, 16, 126);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (45, 'VANCOMYCIN HYDROCHLORIDE', 'VANCOMYCIN HYDROCHLORIDE', 242.63, 22, 546);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (46, 'LOreal Paris Revitalift', 'Avobenzone Homosalate Octisalate Octocrylene', 25.76, 22, 659);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (47, 'Alcohol Prep Pad', 'Isopropyl Alcohol', 232.12, 1, 807);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (48, 'APRIL Bath and Shower Sweet Pea Scented Antibacterial HAND SANITIZER', 'ALCOHOL', 146.97, 9, 461);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (49, 'DDF', 'Avobenzone, Homosalate, Octisalate and Octocrylene', 215.46, 22, 530);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (50, 'Methazolamide', 'Methazolamide', 58.07, 19, 990);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (51, 'Depo-Provera', 'medroxyprogesterone acetate', 291.23, 18, 242);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (52, 'ABILIFY', 'ARIPIPRAZOLE', 296.78, 8, 762);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (53, 'Spironolactone', 'spironolactone', 87.74, 7, 546);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (54, 'NITROUS OXIDE', 'NITROUS OXIDE', 174.37, 21, 225);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (55, 'SPF 15 Anti-shine moisturizing', 'OCTINOXATE and OCTOCRYLENE', 260.23, 7, 891);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (56, 'ATORVASTATIN CALCIUM', 'ATORVASTATIN CALCIUM', 256.82, 10, 78);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (57, 'Losartan Potassium', 'Losartan Potassium', 69.01, 21, 697);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (58, 'Ultimate Rescue', 'Cherry Plum, Clematis, Impatiens, Rock rose, Star of Bethlehem, ATP, Pineal, thymus', 112.0, 9, 676);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (59, 'Extended Phenytoin Sodium', 'Phenytoin Sodium', 67.66, 16, 757);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (60, 'Quetiapine fumarate', 'quetiapine fumarate', 74.21, 15, 485);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (61, 'Goutinex', 'Actaea Spicata, Ammonium Phosphoricum, Belladonna, Colchicum Autumnale, Formicum Acidum, Fraxinus Excelsior, Ledum Palustre, Natrum Carbonicum, Nux Vomica, Phytolacca Decandra, Rhododendron Chrysanthum, Salicylicum Acidum, Urtica Urens', 83.65, 15, 718);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (62, 'Relief 3-G12', 'acetylcholine chloride, histamine, interferon gamma-1a, interleukin-12 human, serotonin', 222.78, 10, 171);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (63, 'Furosemide', 'furosemide', 237.44, 11, 106);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (64, 'Pantoprazole Sodium', 'Pantoprazole Sodium', 80.43, 18, 323);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (65, 'THERAFREEZE', 'MENTHOL', 110.72, 2, 738);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (66, 'head congestion', 'Acetaminophen, Chlorpheniramine maleate, Dextromethorphan HBr, Phenylephrine HCl', 137.19, 19, 537);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (67, 'PORK', 'pork', 71.58, 5, 652);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (68, 'Glytone Suncare block sunscreen', 'octinoxate, octisalate, xinc oxide', 26.13, 25, 312);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (69, 'good sense daytime nighttime', 'Acetaminophen, Dextromethorphan HBr, Doxylamine succinate, Phenylephrine HCl', 71.94, 23, 442);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (70, 'DR. Fresh Dailies Travel', 'SODIUM FLUORIDE', 83.67, 8, 691);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (71, 'Medroxyprogesterone Acetate', 'Medroxyprogesterone Acetate', 248.2, 5, 819);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (72, 'Amitriptyline Hydrochloride', 'Amitriptyline Hydrochloride', 149.11, 7, 467);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (73, 'FERMENTED POMEGRANTE WHITENING SLEEPING MASK', 'DIMETHICONE', 227.22, 9, 317);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (74, 'Hair Regrowth Treatment', 'Minoxidil', 152.35, 16, 625);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (75, 'DIARRHEA VOMITING', 'CUPRIC ARSENITE', 229.45, 11, 66);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (76, 'Levothyroxine Sodium', 'levothyroxine sodium', 117.1, 22, 252);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (77, 'Viagra', 'sildenafil citrate', 145.33, 20, 720);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (78, 'Topcare Pain Relief', 'Acetaminophen', 152.09, 22, 975);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (79, 'California Mugwort', 'California Mugwort', 153.41, 21, 782);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (80, 'SUN SHADES', 'octinoxate and oxybenzone', 15.8, 23, 234);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (81, 'Irbesartan', 'Irbesartan', 126.72, 1, 177);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (82, 'Pleo Alb', 'candida albicans', 292.71, 18, 44);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (83, 'Abstral', 'fentanyl citrate', 215.85, 15, 624);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (84, 'LBEL COULEUR LUXE AMPLIFIER XP', 'Octinoxate and Oxybenzone', 68.18, 8, 787);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (85, 'Minocycline Hydrochloride', 'Minocycline Hydrochloride', 21.65, 14, 361);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (86, 'Treatment Set TS334972', 'Treatment Set TS334972', 229.26, 4, 224);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (87, 'ALLIUM CEPA', 'ONION', 208.25, 13, 592);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (88, 'Mary Kay Tinted Lip Balm Sunscreen SPF 15 Apricot', 'octinoxate, octocrylene, oxybenzone, zinc oxide', 277.93, 19, 8);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (89, 'VENTOLIN', 'albuterol sulfate', 106.38, 3, 375);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (90, 'Neutrogena', 'Benzoyl Peroxide', 282.88, 14, 594);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (91, 'Amnesteem', 'isotretinoin', 128.44, 24, 834);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (92, 'Prochlorperazine Maleate', 'Prochlorperazine Maleate', 98.13, 18, 383);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (93, 'Ziprasidone Hydrochloride', 'Ziprasidone Hydrochloride', 250.49, 21, 356);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (94, 'Anticavity', 'Sodium fluoride', 131.73, 23, 697);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (95, 'Losartan Potassium', 'losartan potassium', 79.45, 8, 579);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (96, 'Surgery/Trauma', 'HYPERICUM,ARNICA,SYMPHYTUM OFFICINALE, BELLIS PERENNIS, STAPHYSAGRIA', 147.25, 23, 10);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (97, 'Piyanping antiitch', 'Hydrocortisone', 202.39, 4, 965);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (98, 'Striverdi Respimat', 'olodaterol respimat inhalation spray', 51.32, 20, 296);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (99, 'Coppertone Tanning Dry Oil', 'Avobenzone, Homosalate, Octisalate, and Oxybenzone', 242.21, 12, 74);
+insert into MEDICAMENTOS.ELEMENTOS (id, name, description, price, id_Categoria, stock) values (100, 'IDOLE BLACK', 'HYDROQUINONE', 187.19, 10, 280);
 
 
 

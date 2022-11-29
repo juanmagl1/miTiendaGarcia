@@ -1,11 +1,23 @@
 @charset "UTF-8";
+
 body{
-	background-image:url("https://elglobal.es/wp-content/uploads/2020/02/GettyImages-949947192-scaled.jpg");
-	position:sticky;
-	top:0;
-	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+.header{
+	text-align:right;
+	color:white;
+	background-color: blue;
+	padding:2%;
+	margin-bottom: 7px;
+	font-size: large;
+	font-family: sans-serif;
 }
 
+th{
+	background-color: blue;
+	color: white;
+}
 a{
 	text-decoration: none;
 	color:black;

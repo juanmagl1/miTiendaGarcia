@@ -1,8 +1,13 @@
 package com.jacaranda.accesoDatos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import com.jacaranda.logica.Compra;
+import com.jacaranda.logica.User;
 
 
 public class CompraDao {
@@ -25,5 +30,12 @@ public class CompraDao {
 			
 		}
 		return buy;
+	}
+	public static List<Compra> articulosComprados (){
+		Session sesion=ConnectionBD.getSession();
+		List<Compra> list= new ArrayList<>();
+		Query query=sesion.createQuery("SELECT c FROM COMPRA c ORDER BY dateBuy ASC");
+		list= query.getResultList();
+		return list;
 	}
 }

@@ -34,7 +34,7 @@ price DECIMAL(5,2),
 dateBuy DATE,
 CONSTRAINT pk_med PRIMARY KEY (id_elemento,users,dateBuy),
 CONSTRAINT fk_user FOREIGN KEY (users) REFERENCES MEDICAMENTOS.USUARIOS (users),
-CONSTRAINT fk_elem FOREIGN KEY (id_elemento) REFERENCES MEDICAMENTOS.MEDICAMENTOS.ELEMENTOS (id)
+CONSTRAINT fk_elem FOREIGN KEY (id_elemento) REFERENCES MEDICAMENTOS.ELEMENTOS (id)
 );
 
 /*insertamos los datos*/

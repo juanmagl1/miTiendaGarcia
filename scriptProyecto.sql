@@ -18,8 +18,8 @@ create table MEDICAMENTOS.CATEGORIA (
 
 create table MEDICAMENTOS.ELEMENTOS (
 	id INT PRIMARY KEY,
-	name VARCHAR(50),
-	description VARCHAR(450),
+	name VARCHAR(950),
+	description VARCHAR(950),
 	price DECIMAL(5,2),
 	id_categoria INT,
 	stock INT,

@@ -16,10 +16,10 @@ create table MEDICAMENTOS.CATEGORIA (
 	description VARCHAR(50)
 );
 
-create table MEDICAMENTOS.MEDICAMENTOS.ELEMENTOS (
+create table MEDICAMENTOS.ELEMENTOS (
 	id_categoria INT PRIMARY KEY,
 	name VARCHAR(50),
-	description VARCHAR(50),
+	description VARCHAR(450),
 	price DECIMAL(5,2),
 	id_Categoria INT,
 	stock INT,

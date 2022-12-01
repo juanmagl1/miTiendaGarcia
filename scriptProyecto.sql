@@ -17,11 +17,11 @@ create table MEDICAMENTOS.CATEGORIA (
 );
 
 create table MEDICAMENTOS.ELEMENTOS (
-	id_categoria INT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	name VARCHAR(50),
 	description VARCHAR(450),
 	price DECIMAL(5,2),
-	id_Categoria INT,
+	id_categoria INT,
 	stock INT,
 	CONSTRAINT fk_cat FOREIGN KEY (id_categoria) REFERENCES MEDICAMENTOS.CATEGORIA (id)
 );

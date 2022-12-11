@@ -97,7 +97,8 @@ public class login extends HttpServlet {
 					for (Elementos i : l) {
 						s.append("<tr>" + "<td>" + i.getId() + "</td>" + "<td>" + i.getName() + "</td>" + "<td>"
 								+ i.getDescription() + "</td>" + "<td>" + i.getPrice() + "</td>" + "<td>"
-								+ i.getid_Categoria().getName() + "</td>"+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\">"+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>");
+								+ i.getid_Categoria().getName() + "</td>"+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\"required"+">"
+								+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>");
 					}
 					// Si el usuario es admin le añado el boton de addProduct
 					if (aux.isAdmin()) {
@@ -148,13 +149,10 @@ public class login extends HttpServlet {
 				List<Elementos>l=ElementoDao.devuelveConjunto();
 				StringBuilder s=new StringBuilder();
 						for (Elementos i:l) {
-							s.append("<tr>"
-									+"<td>"+i.getId()+"</td>"
-									+"<td>"+i.getName()+"</td>"
-									+"<td>"+i.getDescription()+"</td>"
-									+"<td>"+i.getPrice()+"</td>"
-									+ "<td>"+ i.getid_Categoria().getName() +"</td>"
-									+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\">"+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>"
+							s.append("<tr>" + "<td>" + i.getId() + "</td>" + "<td>" + i.getName() + "</td>" + "<td>"
+									+ i.getDescription() + "</td>" + "<td>" + i.getPrice() + "</td>" + "<td>"
+									+ i.getid_Categoria().getName() + "</td>"+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\"required"+">"
+									+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>"
 									);
 						}
 				if (aux.isAdmin()) {

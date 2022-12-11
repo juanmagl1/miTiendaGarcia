@@ -1,10 +1,13 @@
 package com.jacaranda.logica;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity (name="USUARIOS")
 public class User {
@@ -16,6 +19,8 @@ private String email;
 private LocalDate dateBirthday;
 private char gender;
 private boolean admin;
+@OneToMany(mappedBy="users",cascade=CascadeType.ALL,orphanRemoval=true)
+private List<Compra> articlesList;
 
 public User(String users, String pass, String name,String email, LocalDate dateBirthday, char gender, boolean admin) {
 	super();

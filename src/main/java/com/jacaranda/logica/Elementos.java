@@ -1,11 +1,14 @@
 package com.jacaranda.logica;
 
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "ELEMENTOS")
 public class Elementos {
@@ -18,6 +21,9 @@ public class Elementos {
 	@ManyToOne
 	@JoinColumn(name = "id_categoria")
 	private Categoria id_categoria;
+	@OneToMany(mappedBy="id_elemento",cascade= CascadeType.ALL,orphanRemoval=true)
+	private List<Compra>userCompran;
+	
 
 	public Elementos(int id, String name, String description, double price, int stock, Categoria id_categoria) {
 		super();

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -59,15 +60,16 @@ public class register extends HttpServlet {
 			if (aux==null) {
 				boolean b=UserDAO.addUser(new User(user,pass,request.getParameter("nom"),request.getParameter("corr"),LocalDate.parse(request.getParameter("date")),request.getParameter("sex").charAt(0),false));
 				if (b) {
+					HttpSession sesion=request.getSession();
+					sesion.setAttribute("user", user);
+					sesion.setAttribute("pass", pass);
 					List<Elementos>l=ElementoDao.devuelveConjunto();
 					StringBuilder s=new StringBuilder();
 					for (Elementos i:l) {
-						s.append("<tr>"
-								+"<td>"+i.getId()+"</td>"
-								+"<td>"+i.getName()+"</td>"
-								+"<td>"+i.getDescription()+"</td>"
-								+"<td>"+i.getPrice()+"</td>"
-								+ "<td>"+ i.getid_Categoria().getName() +"</td>"
+						s.append("<tr>" + "<td>" + i.getId() + "</td>" + "<td>" + i.getName() + "</td>" + "<td>"
+								+ i.getDescription() + "</td>" + "<td>" + i.getPrice() + "</td>" + "<td>"
+								+ i.getid_Categoria().getName() + "</td>"+"<td>"+"<form action=\"carrito.jsp\">"+"<input type=\"number\"min=\0\" name=\"cant\"placeholder=\"Intoduzca Cantidad\"required"+">"
+								+"<input type=\"hidden\" name=\"nombre\"value="+ i.getId()+">"+"<input type=\"submit\" value=\"Añadir al carrito\">"+"</form>"+"</td>"+"</tr>"
 								);
 					}
 					response.getWriter().append("<!DOCTYPE html>\r\n"
@@ -78,6 +80,7 @@ public class register extends HttpServlet {
 							+ "</head>\r\n"
 							+ "<body>\r\n"
 							+ "  <button><a href=\"index.jsp\">Cerrar Sesión</a></button>\r\n"
+							+ "	<button><a href=\"ComprasPorUsuario.jsp\">Ver compras</a></button>\r\n"
 							+ "    <table border=\"1\">\r\n"
 							+ "        <tr>\r\n"
 							+ "            <th>Id</th>\r\n"

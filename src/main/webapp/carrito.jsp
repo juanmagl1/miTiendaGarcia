@@ -16,21 +16,29 @@
 	int idElemento = Integer.parseInt(request.getParameter("nombre"));
 	int cantidad = Integer.parseInt(request.getParameter("cant"));
 	Carrito c = (Carrito) sesion.getAttribute("carrito");
+	if (cantidad <= 0) {
+		response.sendRedirect("Errores.jsp?msg=\"Error la cantidad no puede ser negativa ni nula");
+	}else{
+		
 	if (sesion.getAttribute("carrito") == null) {
 		c = new Carrito();
 		sesion.setAttribute("carrito", c);
-		if (cantidad <= 0) {
-			response.sendRedirect("Errores.jsp?msg=\"Error la cantidad no puede ser negativa ni nula");
-		}
+		
 	}
 	double precioTotal=0;
 	ItemCarrito i = new ItemCarrito(idElemento, cantidad);
-	//Vamos a añadir el elemento a la lista, pero primero 
+	Elementos elements=ElementoDao.findElement(idElemento);
+	if (elements.getStock()<cantidad){
+		response.sendRedirect("Errores.jsp?msg=\"Error la cantidad no puede ser mayor que el stock");
+	
+	
+	} //Vamos a añadir el elemento a la lista, pero primero 
 	//Tenemos que comprobar si está repetido o no
 	//Si el indexOf devuelve -1 es que no hay ningun elemento con ese id 
 	if (c.getCarro().indexOf(i)==-1){
 	//Entonces lo añado
 	c.add(i);
+	
 	
 	}else {
 		//Si no entra en el if obtengo el item de la lista
@@ -39,8 +47,7 @@
 		//en el set
 		int cant=aux.getCant()+cantidad;
 		aux.setCant(cant);
-	}
-	%>
+	}%>
 <header class="header">
 <p><%=user %></p>
 </header>
@@ -75,5 +82,6 @@
 	<button>
 		<a href="compra.jsp">comprar</a>
 	</button>
+	<%} %>
 </body>
 </html>

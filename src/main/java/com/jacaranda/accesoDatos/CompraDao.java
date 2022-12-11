@@ -31,11 +31,11 @@ public class CompraDao {
 		}
 		return buy;
 	}
-	public static List<Compra> articulosComprados (){
+	public static List<Compra> articulosComprados (User users){
 		Session sesion=ConnectionBD.getSession();
-		List<Compra> list= new ArrayList<>();
-		Query query=sesion.createQuery("SELECT c FROM COMPRA c ORDER BY dateBuy ASC");
-		list= query.getResultList();
+		List<Compra> list= (List<Compra>) sesion
+				.createQuery("From COMPRA c " + " where c.users=:users order by c.dateBuy DESC",Compra.class)
+				.setParameter("users", users).list();			
 		return list;
 	}
 }

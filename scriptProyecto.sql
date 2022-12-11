@@ -32,6 +32,7 @@ id_elemento int,
 users varchar(50),
 price DECIMAL(5,2),
 dateBuy DATE,
+amount INT,
 CONSTRAINT pk_med PRIMARY KEY (id_elemento,users,dateBuy),
 CONSTRAINT fk_user FOREIGN KEY (users) REFERENCES MEDICAMENTOS.USUARIOS (users),
 CONSTRAINT fk_elem FOREIGN KEY (id_elemento) REFERENCES MEDICAMENTOS.ELEMENTOS (id)

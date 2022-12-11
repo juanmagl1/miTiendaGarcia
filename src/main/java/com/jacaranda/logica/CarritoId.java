@@ -6,41 +6,48 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class CarritoId implements Serializable {
-	private String usuario;
-	private int elemento;
+	private String users;
+	private int id_elemento;
 	private LocalDateTime dateBuy;
 	
+
+	public CarritoId() {
+		super();
+		
+	}
+
+
 	public LocalDateTime getdateBuy() {
 		return dateBuy;
 	}
 
-	public void setFechaCompra(LocalDateTime dateBuy) {
+	public String getUsers() {
+		return users;
+	}
+
+	public void setUsers(String users) {
+		this.users = users;
+	}
+
+	public int getId_elemento() {
+		return id_elemento;
+	}
+
+	public void setId_elemento(int id_elemento) {
+		this.id_elemento = id_elemento;
+	}
+
+	public LocalDateTime getDateBuy() {
+		return dateBuy;
+	}
+
+	public void setDateBuy(LocalDateTime dateBuy) {
 		this.dateBuy = dateBuy;
-	}
-
-	public CarritoId() {
-		super();
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public int getElemento() {
-		return elemento;
-	}
-
-	public void setElemento(int elemento) {
-		this.elemento = elemento;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(elemento, usuario);
+		return Objects.hash(dateBuy, id_elemento, users);
 	}
 
 	@Override
@@ -52,8 +59,11 @@ public class CarritoId implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CarritoId other = (CarritoId) obj;
-		return elemento == other.elemento && Objects.equals(usuario, other.usuario);
+		return Objects.equals(dateBuy, other.dateBuy) && id_elemento == other.id_elemento
+				&& Objects.equals(users, other.users);
 	}
+
+	
 	
 	
 }

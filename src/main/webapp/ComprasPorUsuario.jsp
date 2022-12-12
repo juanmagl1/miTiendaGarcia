@@ -26,8 +26,8 @@ User aux = UserDAO.findUser(user);
 <th>Fecha de compra</th>
 <th>Cantidad</th>
 </tr>
-<%List<Compra> lista=CompraDao.articulosComprados(aux);
-for (Compra c:lista){%>
+<%List<Compra> list=CompraDao.articulosComprados(aux);
+for (Compra c:list){%>
 	<tr>
 	<td><%=c.getId_elemento().getId()%></td>
 	<td><%=c.getPrice()%></td>

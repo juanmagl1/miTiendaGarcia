@@ -18,15 +18,15 @@
 	Carrito c = (Carrito) sesion.getAttribute("carrito");
 	String user = (String) sesion.getAttribute("user");
 	User u = UserDAO.findUser(user);
-	boolean compra=false;
+	boolean purchase=false;
 	for (ItemCarrito i : c.getCarro()) {
 		Elementos e=ElementoDao.findElement(i.getId_Element());
-		int stockCompra=e.getStock()-i.getCant();
-		e.setStock(stockCompra);
-		double precio=e.getPrice()*i.getCant();
-		Compra com=new Compra(u,e,LocalDateTime.now(),i.getCant(),precio);
-		compra=CompraDao.addCompra(com);
-		boolean ann=ElementoDao.addElemento(e);
+		int stockPurchase=e.getStock()-i.getCant();
+		e.setStock(stockPurchase);
+		double price=e.getPrice()*i.getCant();
+		Compra com=new Compra(u,e,i.getCant(),price);
+		purchase=CompraDao.addCompra(com);
+		boolean add=ElementoDao.addElemento(e);
 	}
 	c.getCarro().clear();
 	

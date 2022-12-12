@@ -28,11 +28,11 @@ public class Compra {
 	
 	private int amount;
 	private double price;
-	public Compra(User users, Elementos id_elemento, LocalDateTime dateBuy, int amount, double price) {
+	public Compra(User users, Elementos id_elemento, int amount, double price) {
 		super();
 		this.users = users;
 		this.id_elemento = id_elemento;
-		this.dateBuy = dateBuy;
+		this.dateBuy = LocalDateTime.now();
 		this.amount = amount;
 		this.price = price;
 	}

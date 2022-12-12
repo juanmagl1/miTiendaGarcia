@@ -14,7 +14,7 @@
 
 	<%
 	List<Elementos> list = ElementoDao.devuelveConjunto();
-	List<Categoria> lista = CategoriaDao.devuelveCategoria();
+	List<Categoria> listCategory = CategoriaDao.devuelveCategoria();
 	%>
 	<form action="execAddProduct.jsp" method="post">
 	<label>Id:</label>
@@ -36,7 +36,7 @@
 	<label>Categoria:</label>
 	<br>
 	<select id="lista" name="lista">
-	<%for (Categoria item:lista){ %>
+	<%for (Categoria item:listCategory){ %>
 	<option id="opt" value="<%=item.getId()%>"><%=item.getName()%></option>
 	<%} %>
 	</select><br>

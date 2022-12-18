@@ -26,7 +26,6 @@ public class CompraDao {
 			buy=true;
 		}catch (Exception e) {
 			e.getMessage();
-			sesion.getTransaction().rollback();
 			
 		}
 		return buy;

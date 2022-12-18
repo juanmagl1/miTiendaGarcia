@@ -30,7 +30,7 @@ create table MEDICAMENTOS.ELEMENTOS (
 CREATE TABLE MEDICAMENTOS.COMPRA (
 id_elemento int,
 users varchar(50),
-price DECIMAL(5,2),
+price DECIMAL(15,2),
 dateBuy DATE,
 amount INT,
 CONSTRAINT pk_med PRIMARY KEY (id_elemento,users,dateBuy),

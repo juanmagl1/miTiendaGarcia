@@ -23,7 +23,7 @@
 		Elementos e=ElementoDao.findElement(i.getId_Element());
 		int stockPurchase=e.getStock()-i.getCant();
 		e.setStock(stockPurchase);
-		double price=e.getPrice()*i.getCant();
+		double price=Math.round(e.getPrice()*i.getCant());
 		Compra com=new Compra(u,e,i.getCant(),price);
 		purchase=CompraDao.addCompra(com);
 		boolean add=ElementoDao.addElemento(e);
